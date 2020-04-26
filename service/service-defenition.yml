@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30008
+#nod2Port - Range: 30000 - 32767. If this is not specified , a value is automatically allocated by k8s
+#port is mandatory
+#if *targetPort* is not mentioned, it will take the value of *port*
+  selector:
+    app: myapp
+    type: pod
